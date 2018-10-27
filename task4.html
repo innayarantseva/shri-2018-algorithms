@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>Algorithms</title>
+  </head>
+  <body>
+    <script>
+        var inputTree;
+
+        class Node {
+            constructor(val, left = null, right = null) {
+                this.val   = val;
+                this.left  = left;
+                this.right = right;
+            }
+        }
+
+        var c = new Node('C'),
+            d = new Node('D'),
+
+            b = new Node('B', c, d),
+
+            g = new Node('G'),
+            h = new Node('H'),
+
+            f = new Node('F', g, h),
+
+            e = new Node('E', f),
+
+            // root
+            a = new Node('A', b, e);
+
+
+        var traverse = (rootNode, str = '') => {
+            console.log(rootNode, rootNode.val, str);
+
+            if (rootNode.left) {
+                str += traverse(rootNode.left);
+            }
+            str += rootNode.val;
+            if (rootNode.right) {
+                str += traverse(rootNode.right);
+            }
+
+
+            return str;
+        }
+
+        // console.log(a);
+        console.log( traverse(a) );
+
+    </script>
+  </body>
+</html>
