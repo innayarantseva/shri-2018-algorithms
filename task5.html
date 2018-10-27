@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>Algorithms</title>
+  </head>
+  <body>
+    <script>
+        var inputTree;
+
+        class Node {
+            constructor(val, left = null, right = null) {
+                this.val   = val;
+                this.left  = left;
+                this.right = right;
+            }
+        }
+
+        var c = new Node('C'),
+            d = new Node('D'),
+
+            b = new Node('B', c, d),
+
+            g = new Node('G'),
+            h = new Node('H'),
+
+            f = new Node('F', g, h),
+
+            e = new Node('E', f),
+
+            // root
+            a = new Node('A', b, e);
+
+
+        var breadthTraverse = ( rootNode ) => {
+
+            if (rootNode === null) {
+                return;
+            }
+
+            var stack = []
+                str = '';
+            stack.push( rootNode );
+
+            while ( stack.length > 0 ) {
+                var node = stack[0];
+
+                node.left  && stack.push( node.left  );
+                node.right && stack.push( node.right );
+
+                var s = stack.shift();
+                str += s.val;
+            }
+
+            return str;
+        }
+
+        // console.log(a);
+        console.log( breadthTraverse(a) );
+
+    </script>
+  </body>
+</html>
