@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>Algorithms</title>
+  </head>
+  <body>
+    <script>
+        var inputData = [ 6, 7, 1, 4, 3, 2, 2 ];
+
+        console.log( 'initial data', inputData );
+
+        var insertionSort = (data) => {
+            for ( var i = 1; i < data.length; i++ ) {
+
+                var curr = data[i];
+
+                for ( j = i - 1; j >= 0 && data[j] > curr; j-- ) {
+                    data[j + 1] = data[j];
+                }
+
+                data[j + 1] = curr;
+            }
+            return data;
+        };
+
+        insertionSort(inputData);
+
+        console.log( 'insertion sort data', inputData );
+    </script>
+  </body>
+</html>
