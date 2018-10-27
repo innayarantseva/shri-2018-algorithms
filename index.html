@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>Algorithms</title>
+  </head>
+  <body>
+    <script>
+        var data = [ 6, 7, 1, 4, 3, 2, 2, 4 ];
+
+        console.log( 'initial data', data );
+
+
+        var bubbleSort = (data) => {
+            for ( var i = 0; i < data.length; i++ ) {
+                for ( var j = 0; j < ( data.length - i - 1 ); j ++ ) {
+                    if ( data[j] > data[j + 1] ) {
+                            var keeper = data[j];
+                            data[j] = data[j + 1];
+                            data[j + 1] = keeper;
+                            swapped = true;
+                        }
+                }
+            }
+        };
+
+
+        bubbleSort(data);
+
+        console.log( 'sort data', data );
+    </script>
+  </body>
+</html>
