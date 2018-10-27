@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>Algorithms</title>
+  </head>
+  <body>
+    <script>
+        var inputData = [ 6, 7, 1, 4, 3, 2, 2 ];
+
+        console.log( 'initial data', inputData );
+
+
+        var selectionSort = (data) => {
+            for ( var i = 0; i < data.length; i++ ) {
+                var minIndex = i,
+                    keeper   = data[i];
+
+                for ( var j = (i + 1); j < data.length; j++ ) {
+                    if ( data[j] < data[minIndex] ) {
+                        minIndex = j;
+                    }
+                }
+
+                data[i] = data[minIndex];
+                data[minIndex] = keeper;
+            }
+        };
+
+        selectionSort(inputData);
+
+        console.log( 'sort data', inputData );
+    </script>
+  </body>
+</html>
