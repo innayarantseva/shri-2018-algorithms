@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+
+    <title>Algorithms</title>
+  </head>
+  <body>
+    <script>
+        var parenthesis = [
+                [ '(', ')' ],
+                [ '{', '}' ],
+                [ '[', ']' ]
+            ],
+
+            data = '({[abc]ef}1(2))',
+            data2 = '({)}';
+
+
+        var getCharIndex = ( char ) => {
+            var index;
+
+            for ( var i = 0; i < parenthesis.length; i++ ) {
+                for ( var j = 0; j < parenthesis.length; j++ ) {
+                    if (parenthesis[i][j] === char) {
+                        index = [ i, j ];
+                    }
+                }
+            }
+
+            return index;
+        };
+
+
+        var checkString = (str) => {
+            var charArray = str.split(''),
+                valid,
+                stack     = [];
+
+            for ( var i = 0; i < charArray.length; i++ ) {
+
+                var charType = getCharIndex( charArray[i] );
+
+                if ( charType ) {
+                    if ( charType[1] === 0 ) {
+                        stack.push( charType );
+                        valid = true;
+                    } else {
+                        var stackShift = stack.pop();
+
+                        valid = ( (stackShift && stackShift[0]) === charType[0] )
+                                    ? true
+                                    : false;
+                    }
+                }
+            }
+
+            valid = stack.length > 0
+                ? false
+                : valid;
+
+            return valid;
+
+        };
+
+        var outputs = (arr) => {
+            arr.forEach(
+                input => console.log( input, checkString(input) )
+            );
+        }
+
+        var inputs = [
+            '([)]',
+            '((',
+            '))',
+            '(]',
+            data,
+            data2
+        ];
+
+        outputs( inputs );
+
+
+    </script>
+  </body>
+</html>
